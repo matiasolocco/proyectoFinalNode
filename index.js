@@ -2,6 +2,7 @@
 const express = require('express');
 const { connectDB } = require('./src/utils/database');
 const routerUser = require('./src/api/routes/user.routes');
+const routerAirline = require('./src/api/routes/airline.routes');
 const env = require("dotenv")
 const cloudinary = require("cloudinary").v2;
 const cors = require("cors")
@@ -18,6 +19,7 @@ const server = express();
 server.use(express.json());
 connectDB();
 server.use(cors())
+server.use('/', routerAirline);
 server.use('/user', routerUser);
 
 //ejecucion del servidor
@@ -25,3 +27,9 @@ const PORT = 5001;
 server.listen(PORT, () => {
   console.log(`Escuchando puerto http://localhost:${PORT}`);
 });
+
+/*
+const PORT = process.env.PORT;
+server.listen(PORT, () => {
+  console.log(`Escuchando puerto http://localhost:${PORT}`);
+});*/
