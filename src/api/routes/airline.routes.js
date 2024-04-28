@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const {addAirline,selectAirline, updateAirline } = require("../controllers/airline.controller")
+const {addAircraft, selectAircraft, updateAircraft, deleteAircraft} = require("../controllers/aircraft.controller")
 
-router.post("/add", addAirline);
-router.get("/select", selectAirline);
+router.post("/add", addAircraft);
+router.get("/select", selectAircraft);
 //router.get("/selectpet/:id", selectOnePet)
-router.put("/update/:id", updateAirline)
-//router.delete("/delete/:id", deletePet)
+router.put("/update/:id", updateAircraft);
+router.delete("/delete/:id", deleteAircraft)
 
 module.exports = router;
