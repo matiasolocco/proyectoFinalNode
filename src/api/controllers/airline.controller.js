@@ -1,4 +1,4 @@
-const Airline = require("../models/airline.model")
+/*const Airline = require("../models/airline.model")
 
 const addAirline = async (req, res) => {
     try {
@@ -52,4 +52,4 @@ const updateAirline = async (req, res) => {
 }
 
 
-module.exports = {addAirline,selectAirline, updateAirline }
+module.exports = {addAirline,selectAirline, updateAirline }*/
