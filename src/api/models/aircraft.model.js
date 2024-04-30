@@ -6,6 +6,10 @@ const aircraftSchema = new Schema({
   model: { type: String, require: true },
   series: { type: String, require: true },
   year: { type: Number, require: true },
+  image: { type: String, default: "" }
+},
+{
+  collection: 'aircraft',
 });
 
 const Aircraft = mongoose.model('aircraft', aircraftSchema);

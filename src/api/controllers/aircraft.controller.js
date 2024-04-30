@@ -3,7 +3,7 @@ const Aircraft = require('../models/aircraft.model');
 const addAircraft = async (req, res) => {
   try {
     console.log(req.body);
-    const newAircraft = new Aicraft(req.body);
+    const newAircraft = new Aircraft(req.body);
     const createdAircraft = await newAircraft.save();
     return res.json(createdAircraft);
   } catch (error) {
