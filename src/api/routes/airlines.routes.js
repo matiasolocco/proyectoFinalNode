@@ -1,19 +1,13 @@
-/*const express = require("express");
+const express = require("express");
 const router = express.Router();
-//const express = require("express");
-//const router = express.Router();
 
-const {addAircraft, selectAircraft, updateAircraft, deleteAircraft} = require("../controllers/aircraft.controller")
-//const {addAircraft, selectAircraft, updateAircraft, deleteAircraft} = require("../controllers/aircraft.controller")
+const { addAirline, selectAirline, updateAirline, deleteAirline} = require("../controllers/airlines.controller")
 
-router.post("/add", addAircraft);
-router.get("/select", selectAircraft);
-//router.post("/add", addAircraft);
-//router.get("/select", selectAircraft);
-//router.get("/selectpet/:id", selectOnePet)
-router.put("/update/:id", updateAircraft);
-router.delete("/delete/:id", deleteAircraft)
-//router.put("/update/:id", updateAircraft);
-//router.delete("/delete/:id", deleteAircraft)
 
-module.exports = router;*/
+router.post("/add", addAirline);
+router.get("/select", selectAirline);
+router.put("/update/:id", updateAirline);
+router.delete("/delete/:id", deleteAirline);
+
+
+module.exports = router;

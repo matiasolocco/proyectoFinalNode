@@ -1,4 +1,4 @@
-/*const Airline = require("../models/airline.model")
+const Airline = require("../models/airlines.model")
 const addAirline = async (req, res) => {
     try {
         console.log(req.body)
@@ -45,4 +45,18 @@ const updateAirline = async (req, res) => {
         return res.status(500).json(error)
     }
 }
-module.exports = {addAirline,selectAirline, updateAirline }*/
+const deleteAirline = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const deleteAirline = await Aircraft.findByIdAndDelete(id);
+        if (!deleteAirline) {
+            return res.status(404).json({ message: "This airline does not exists" })
+        }
+        return res.status(200).json(deleteAirline)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json(error)
+    }
+  
+  }
+module.exports = {addAirline,selectAirline, updateAirline, deleteAirline }
