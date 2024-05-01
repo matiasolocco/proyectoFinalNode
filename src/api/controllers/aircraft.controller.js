@@ -1,5 +1,7 @@
 const Aircraft = require('../models/aircraft.model');
 
+//1º endpoint CRUD (Create) --> añadir nuevos aviones
+//Prueba postman ruta aircraft/add: OK
 const addAircraft = async (req, res) => {
   try {
     console.log(req.body);
@@ -11,11 +13,14 @@ const addAircraft = async (req, res) => {
     return res.status(500).json(error);
   }
 };
+
+//2º endpoint CRUD (Read) --> buscar aviones
+//Prueba postman ruta aircraft/select: OK
 const selectAircraft = async (req, res) => {
   const aircrafts = await Aircraft.find();
   return res.status(200).json(aircrafts)
 }
-const addFavorite = async (req, res) => {
+const selectOneAircraft = async (req, res) => {
   try {
       const { id } = req.params;
       const findAicraft = await Aircraft.findOne({ _id: id })
@@ -59,4 +64,4 @@ const deleteAircraft = async (req, res) => {
 
 }
 
-module.exports = {addAircraft, selectAircraft, addFavorite, updateAircraft, deleteAircraft};
+module.exports = {addAircraft, selectAircraft, selectOneAircraft, updateAircraft, deleteAircraft};

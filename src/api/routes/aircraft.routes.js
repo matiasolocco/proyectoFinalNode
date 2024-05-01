@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const {addAircraft, selectAircraft, updateAircraft, deleteAircraft, addFavorite} = require("../controllers/aircraft.controller")
+const {addAircraft, selectAircraft, updateAircraft, deleteAircraft, selectOneAircraft} = require("../controllers/aircraft.controller")
 
 router.post("/add", addAircraft);
 router.get("/select", selectAircraft);
-router.get("/addfavorite/:id", addFavorite);
+router.get("/addfavorite/:id", selectOneAircraft);
 router.put("/update/:id", updateAircraft);
 router.delete("/delete/:id", deleteAircraft);
 
