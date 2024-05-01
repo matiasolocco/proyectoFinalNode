@@ -19,7 +19,7 @@ const server = express();
 server.use(express.json());
 connectDB();
 //server.use(cors())
-//server.use('/airline', routerAirline);
+
 server.use('/aircraft', routerAircraft);
 server.use('/user', routerUser);
 

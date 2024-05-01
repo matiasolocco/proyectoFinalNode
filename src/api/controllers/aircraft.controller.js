@@ -20,6 +20,9 @@ const selectAircraft = async (req, res) => {
   const aircrafts = await Aircraft.find();
   return res.status(200).json(aircrafts)
 }
+
+//3º endpoint CRUD (Read) --> busco 1 solo avión (id: 66321438b5d0e83cab2a0f68)
+//Prueba postman ruta aircraft/selectone: OK
 const selectOneAircraft = async (req, res) => {
   try {
       const { id } = req.params;
@@ -31,12 +34,15 @@ const selectOneAircraft = async (req, res) => {
       return res.status(500).json(error)
   }
 }
+
+//4º endpoint CRUD (Update) --> modifico el año de un avión (id: 66321438b5d0e83cab2a0f68)
+//Prueba postman ruta aircraft/update: OK
 const updateAircraft = async (req, res) => {
   try {
       const { id } = req.params;
-      const petBody = new Aircraft(req.body)
-      aircraftBody._id = id;
-      const updateAircraft = await Aircraft.findByIdAndUpdate(id, aircraftBody, { new: true })
+      const aircraftBody = new Aircraft(req.body)
+      aircraftBody._id = id;//accedo al body de mi id
+      const updateAircraft = await Aircraft.findByIdAndUpdate(id, aircraftBody, { new: true })//luego me devuelve mi objeto (id) modificado
       console.log(updateAircraft)
       if (!updateAircraft) {
           return res.status(404).json({ message: "Aircraft no existe" })

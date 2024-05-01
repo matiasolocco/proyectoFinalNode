@@ -5,7 +5,7 @@ const {addAircraft, selectAircraft, updateAircraft, deleteAircraft, selectOneAir
 
 router.post("/add", addAircraft);
 router.get("/select", selectAircraft);
-router.get("/addfavorite/:id", selectOneAircraft);
+router.get("/selectone/:id", selectOneAircraft);
 router.put("/update/:id", updateAircraft);
 router.delete("/delete/:id", deleteAircraft);
 
