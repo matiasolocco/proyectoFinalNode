@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const { validateEmailDB, validatePassword } = require('../../utils/validator');
 const { generateToken } = require("../../utils/jwt")
 
+//1º endpoint --> Registro de usuarios
+//Prueba postman ruta user/register: OK
 const register = async (req, res) => {
   try {
     // creo el documento del usuario
@@ -104,10 +106,9 @@ const updateUser = async (req, res) => {
 
 const selectUser = async (req, res) => {
   const nameUser = req.query.name;
-  //find({ name: 'alfonsina' })
   const users = await User.find({ name: nameUser }) //findOne devuelve el primero que encuentra
-    .populate({ path: 'pet', select: 'name' })
-    .populate({ path: 'doctor', select: 'name' });
+    .populate({ path: 'Aircraft', select: 'model' })
+    //.populate({ path: 'doctor', select: 'name' });
   return res.status(200).json(users);
 };
 
