@@ -22,7 +22,7 @@ const selectAircraft = async (req, res) => {
 }
 
 //3º endpoint CRUD (Read) --> busco 1 solo avión (id: 66321438b5d0e83cab2a0f68)
-//Prueba postman ruta aircraft/selectone: OK
+//Prueba postman ruta aircraft/selectone/:id : OK
 const selectOneAircraft = async (req, res) => {
   try {
       const { id } = req.params;
@@ -55,6 +55,9 @@ const updateAircraft = async (req, res) => {
   }
 
 }
+
+//5º endpoint CRUD (Delete) --> elimino un avión ( id: 66321408b5d0e83cab2a0f62)
+//Prueba Postman ruta aircraft/delete/:id : OK
 const deleteAircraft = async (req, res) => {
   try {
       const id = req.params.id;
