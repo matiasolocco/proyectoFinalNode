@@ -4,8 +4,6 @@ const airlineSchema = new Schema(
   {
     name: { type: String, require: true },
     country: { type: String, require: true  },
-    
-    
   },
   {
     collection: 'airlines',

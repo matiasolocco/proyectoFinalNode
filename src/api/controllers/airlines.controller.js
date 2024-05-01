@@ -19,11 +19,11 @@ const selectAirline = async (req, res) => {
     const airlines = await Airline.find();
     return res.status(200).json(airlines)
 }
-const selectOnePet = async (req, res) => {
+const selectOneAirline = async (req, res) => {
     try {
         const { id } = req.params;
-        const findPet = await Pet.findOne({ _id: id })
-        return res.status(200).json(findPet)
+        const findAirline = await Airline.findOne({ _id: id })
+        return res.status(200).json(findAirline)
     } catch (error) {
         console.log(error)
         return res.status(500).json(error)
@@ -59,4 +59,4 @@ const deleteAirline = async (req, res) => {
     }
   
   }
-module.exports = {addAirline,selectAirline, updateAirline, deleteAirline }
+module.exports = {addAirline,selectAirline, selectOneAirline, updateAirline, deleteAirline }
