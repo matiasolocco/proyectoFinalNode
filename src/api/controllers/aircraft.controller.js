@@ -11,17 +11,15 @@ const addAircraft = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-
-
 const selectAircraft = async (req, res) => {
   const aircrafts = await Aircraft.find();
   return res.status(200).json(aircrafts)
 }
-const selectOnePet = async (req, res) => {
+const addFavorite = async (req, res) => {
   try {
       const { id } = req.params;
-      const findPet = await Pet.findOne({ _id: id })
-      return res.status(200).json(findPet)
+      const findAicraft = await Aircraft.findOne({ _id: id })
+      return res.status(200).json(findAicraft)
 
   } catch (error) {
       console.log(error)
@@ -46,7 +44,6 @@ const updateAircraft = async (req, res) => {
   }
 
 }
-
 const deleteAircraft = async (req, res) => {
   try {
       const id = req.params.id;
@@ -62,4 +59,4 @@ const deleteAircraft = async (req, res) => {
 
 }
 
-module.exports = {addAircraft, selectAircraft, updateAircraft, deleteAircraft};
+module.exports = {addAircraft, selectAircraft, addFavorite, updateAircraft, deleteAircraft};
