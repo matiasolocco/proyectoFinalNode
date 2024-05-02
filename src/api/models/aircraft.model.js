@@ -7,7 +7,7 @@ const aircraftSchema = new Schema(
   model: { type: String, require: true },
   series: { type: String, require: true },
   year: { type: Number, require: true },
-  airline: { type: String, require: true },
+  //airline: [{ type: Schema.ObjectId, ref: 'airlines' }],//realcion con la colección airlines
   image: { type: String, default: "" }
 },
 {

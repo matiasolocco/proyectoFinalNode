@@ -90,11 +90,11 @@ const addUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const idUser = req.params.id;
-    const idPet = req.body.id;
-    console.log(idUser, idPet);
+    const idAircraft = req.body.id;
+    console.log(idUser, idAircraft);
     const modifyUser = await User.findByIdAndUpdate(
       idUser,
-      { $push: { pet: idPet } },
+      { $push: { aircraft: idAircraft } },
       { new: true }
     );
     return res.status(200).json(modifyUser);

@@ -1,4 +1,5 @@
 const Aircraft = require('../models/aircraft.model');
+const Airline = require('../models/airlines.model');
 
 //1º endpoint CRUD (Create) --> añadir nuevos aviones
 //Prueba postman ruta aircraft/add: OK
@@ -55,6 +56,10 @@ const updateAircraft = async (req, res) => {
   }
 
 }
+
+
+
+
 
 //5º endpoint CRUD (Delete) --> elimino un avión ( id: 66321408b5d0e83cab2a0f62)
 //Prueba Postman ruta aircraft/delete/:id : OK
