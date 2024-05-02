@@ -6,7 +6,7 @@ const routerAircraft = require('./src/api/routes/aircraft.routes');
 const routerAirline = require('./src/api/routes/airlines.routes');
 const env = require("dotenv")
 const cloudinary = require("cloudinary").v2;
-//const cors = require("cors")
+const cors = require("cors")
 
 env.config() // para trabajar con variables de entorno
 // configuración del servidor
@@ -19,7 +19,7 @@ cloudinary.config({
 const server = express();
 server.use(express.json());
 connectDB();
-//server.use(cors())
+server.use(cors())
 
 server.use('/airline', routerAirline);
 server.use('/aircraft', routerAircraft);

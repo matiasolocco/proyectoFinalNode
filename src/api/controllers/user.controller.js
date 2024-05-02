@@ -105,10 +105,10 @@ const updateUser = async (req, res) => {
 };
 
 const selectUser = async (req, res) => {
-  const nameUser = req.query.name;
-  const users = await User.find({ name: nameUser }) //findOne devuelve el primero que encuentra
-    .populate({ path: 'Aircraft', select: 'model' })
-    //.populate({ path: 'doctor', select: 'name' });
+  //onst nameUser = req.query.name;
+  const users = await User.find().populate('aircraft') //const users = await User.find({ name: nameUser }) 
+    //.populate({ path: 'aircraft', select: 'model' })
+    //.populate({ path: 'airlines', select: 'name' });
   return res.status(200).json(users);
 };
 
