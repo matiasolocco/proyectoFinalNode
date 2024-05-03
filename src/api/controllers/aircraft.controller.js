@@ -45,7 +45,24 @@ const selectOneAircraft = async (req, res) => {
 
 //4º endpoint CRUD (Update) --> modifico el año de un avión (id: 66321438b5d0e83cab2a0f68)
 //Prueba postman ruta aircraft/update: OK
+
 const updateAircraft = async (req, res) => {
+  try {
+    const idAircraft = req.params.id;
+    const idAirline = req.body.id;
+    console.log(idAircraft, idAirline);
+    const modifyAircraft = await Aircraft.findByIdAndUpdate(
+      idAircraft,
+      { $push: { airline: idAirline } },
+      { new: true }
+    );
+    return res.status(200).json(modifyAircraft);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json(error);
+  }
+};
+/*const updateAircraft = async (req, res) => {
   try {
       const { id } = req.params;
       const aircraftBody = new Aircraft(req.body)
@@ -63,7 +80,7 @@ const updateAircraft = async (req, res) => {
       return res.status(500).json(error)
   }
 
-}
+}*/
 
 /*const updateAircraft = async (req, res) => {
   try {
