@@ -105,14 +105,24 @@ const updateUser = async (req, res) => {
   }
 };
 
+
 const selectUser = async (req, res) => {
-  //onst nameUser = req.query.name;
-  const users = await User.find() //const users = await User.find({ name: nameUser }) 
-    .populate({ path: 'aircraft', select: 'manufacturer model series airline'  })
-    
-  
-  
-  return res.status(200).json(users);
+  try {
+    const users = await User.find()
+      .populate({
+        path: 'aircraft',
+        select: 'manufacturer model series airline',
+        populate: {
+          path: 'airline',
+          select: 'name'
+        }
+      });
+    return res.status(200).json(users);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json(error);
+  }
 };
+
 
 module.exports = { register, login, modifyProfile, addUser, selectUser, updateUser };

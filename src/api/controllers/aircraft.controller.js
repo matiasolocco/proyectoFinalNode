@@ -30,7 +30,8 @@ const selectAircraft = async (req, res) => {
   <-- */
  
     try {
-      const aircrafts = await Aircraft.find().populate('airline', 'name');
+      const aircrafts = await Aircraft.find()
+      .populate({ path: 'airline', select: 'name' });
       return res.status(200).json(aircrafts);
     } catch (error) {
       console.log(error);
