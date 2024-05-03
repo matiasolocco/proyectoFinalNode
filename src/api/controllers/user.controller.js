@@ -111,12 +111,15 @@ const selectUser = async (req, res) => {
     const users = await User.find()
       .populate({
         path: 'aircraft',
-        select: 'manufacturer model series airline',
+        select: 'manufacturer model series airline -_id',
         populate: {
           path: 'airline',
-          select: 'name'
+          select: 'name -_id',
         }
-      });
+        
+        
+      })
+      .select('-_id');//Excluyo el id
     return res.status(200).json(users);
   } catch (error) {
     console.log(error);

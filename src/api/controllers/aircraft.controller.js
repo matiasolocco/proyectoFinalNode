@@ -31,7 +31,8 @@ const selectAircraft = async (req, res) => {
  
     try {
       const aircrafts = await Aircraft.find()
-      .populate({ path: 'airline', select: 'name' });
+      .populate({ path: 'airline', select: 'name' })
+  
       return res.status(200).json(aircrafts);
     } catch (error) {
       console.log(error);
@@ -93,36 +94,6 @@ const updateAircraft = async (req, res) => {
 
 }*/
 
-/*const updateAircraft = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { airlineId, ...aircraftData } = req.body; // Obtén el ID de la aerolínea del cuerpo de la solicitud
-
-    // Actualiza los datos del avión, excluyendo el ID de la aerolínea
-    const updatedAircraft = await Aircraft.findByIdAndUpdate(
-      id,
-      aircraftData,
-      { new: true }
-    );
-
-    // Verifica si el avión existe
-    if (!updatedAircraft) {
-      return res.status(404).json({ message: "Aircraft no existe" });
-    }
-
-    // Agrega la aerolínea al avión utilizando $push
-    if (airlineId) {
-      updatedAircraft.airline.push(airlineId);
-      await updatedAircraft.save(); // Guarda los cambios en la base de datos
-    }
-
-    return res.status(200).json(updatedAircraft);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json(error);
-  }
-};
-*/
 
 
 
