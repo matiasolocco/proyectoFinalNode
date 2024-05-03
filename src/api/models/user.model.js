@@ -7,7 +7,7 @@ const userSchema = new Schema(
     lastname: { type: String, require: true },
     //Establezco la relacion entre user y los aviones (Aircraft) en los que ha volado
     aircraft: [{ type: Schema.ObjectId, ref: 'aircraft' }],
-    airline: [{ type: Schema.ObjectId, ref: 'airlines'}], 
+    //airline: [{ type: Schema.ObjectId, ref: 'airlines'}], 
     email: { type: String, require: true },
     password: { type: String, require: true },
     role: {

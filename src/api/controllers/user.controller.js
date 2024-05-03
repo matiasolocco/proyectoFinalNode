@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+//const Airline = require('../models/airlines.model')
 const bcrypt = require('bcrypt');
 const { validateEmailDB, validatePassword } = require('../../utils/validator');
 const { generateToken } = require("../../utils/jwt")
@@ -106,8 +107,8 @@ const updateUser = async (req, res) => {
 
 const selectUser = async (req, res) => {
   //onst nameUser = req.query.name;
-  const users = await User.find().populate('aircraft') //const users = await User.find({ name: nameUser }) 
-    //.populate({ path: 'aircraft', select: 'model' })
+  const users = await User.find() //const users = await User.find({ name: nameUser }) 
+    .populate({ path: 'aircraft', select: 'model' })
     //.populate({ path: 'airlines', select: 'name' });
   return res.status(200).json(users);
 };
