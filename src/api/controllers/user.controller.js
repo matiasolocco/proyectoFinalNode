@@ -108,8 +108,10 @@ const updateUser = async (req, res) => {
 const selectUser = async (req, res) => {
   //onst nameUser = req.query.name;
   const users = await User.find() //const users = await User.find({ name: nameUser }) 
-    .populate({ path: 'aircraft', select: 'model' })
-    //.populate({ path: 'airlines', select: 'name' });
+    .populate({ path: 'aircraft', select: 'manufacturer model series airline'  })
+    
+  
+  
   return res.status(200).json(users);
 };
 
