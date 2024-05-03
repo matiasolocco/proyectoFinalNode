@@ -1,5 +1,5 @@
 const Aircraft = require('../models/aircraft.model');
-//const Airline = require('../models/airlines.model');
+const Airline = require('../models/airlines.model');
 
 //1º endpoint CRUD (Create) --> añadir nuevos aviones
 //Prueba postman ruta aircraft/add: OK
@@ -18,17 +18,27 @@ const addAircraft = async (req, res) => {
 //2º endpoint CRUD (Read) --> buscar aviones
 //Prueba postman ruta aircraft/select: OK
 const selectAircraft = async (req, res) => {
+  /*-->
   //const aircrafts = await Aircraft.find();
   //return res.status(200).json(aircrafts)
   
     //onst nameUser = req.query.name;
     const aircrafts = await Aircraft.find() //const users = await User.find({ name: nameUser }) 
       //.populate({ path: 'aircraft', select: 'model' })
-      //.populate({ path: 'airlines', select: 'name' });
+      .populate({ path: 'airlines', select: 'name' });
     return res.status(200).json(aircrafts);
+  <-- */
+ 
+    try {
+      const aircrafts = await Aircraft.find().populate('airline', 'name');
+      return res.status(200).json(aircrafts);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json(error);
+    }
+  
   
 }
-
 //3º endpoint CRUD (Read) --> busco 1 solo avión (id: 66321438b5d0e83cab2a0f68)
 //Prueba postman ruta aircraft/selectone/:id : OK
 const selectOneAircraft = async (req, res) => {
