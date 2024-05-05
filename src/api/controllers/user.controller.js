@@ -63,7 +63,7 @@ const login = async (req, res) => {
   }
 }
 //3º endpoint --> Modificacion de usuarios
-//Prueba postman ruta user/update: OK
+//Prueba postman ruta user/update: OK -- se modifica el mail del usuario Juan Perez id 66320f80fd0f052367de3e5f
 const modifyProfile = async (req, res) => {
   console.log(req.userProfile); // es el usuario con los datos correspondiente al token
   const newUser = new User(req.body);
@@ -100,15 +100,15 @@ const selectUser = async (req, res) => {
     const users = await User.find()
       .populate({
         path: 'aircraft',
-        select: 'manufacturer model series airline -_id',
+        select: 'manufacturer model series airline -_id',//filtro de datos, eliminando el id
         populate: {
           path: 'airline',
-          select: 'name -_id',
+          select: 'name -_id',//excluyo el id
         }
         
         
       })
-      .select('-_id');//Excluyo el id
+
     return res.status(200).json(users);
   } catch (error) {
     console.log(error);

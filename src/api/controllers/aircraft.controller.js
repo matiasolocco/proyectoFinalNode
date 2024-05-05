@@ -20,7 +20,7 @@ const addAircraft = async (req, res) => {
 const selectAircraft = async (req, res) => {
     try {
       const aircrafts = await Aircraft.find()
-      .populate({ path: 'airline', select: 'name' })
+      .populate({ path: 'airline', select: 'name' })//para filtrar solamente el nombre de la aerolinea
   
       return res.status(200).json(aircrafts);
     } catch (error) {
