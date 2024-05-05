@@ -11,16 +11,11 @@ const register = async (req, res) => {
     // creo el documento del usuario
     const userDoc = new User(req.body);
     console.log(req.body);
-    // si recibo de cloudinary la ruta de la imagen  se la asigno a la propiedad image de nuevo documento
-    /* if (req.file.path) {
-       userDoc.image = req.file.path;
-     }*/
     //validaciones
     //1.- El usuario no exista. (email)
     const valEmail = await validateEmailDB(req.body.email);
     console.log(valEmail); // devuelve null si no se encuentra  en la BD
     if (!valEmail) {
-      // valEmail === null
       //2.- La contraseña cumpla el patron requerido (regex)
       const valPassword = validatePassword(req.body.password);
       if (valPassword) {
@@ -31,13 +26,13 @@ const register = async (req, res) => {
       } else {
         return res.status(200).json({
           success: false,
-          message: 'La contraseña no cumple con el patron indicado',
+          message: 'The password does not match the indicated pattern',
         });
       }
     }
     return res
       .status(200)
-      .json({ success: false, message: 'El email ya está registrado' });
+      .json({ success: false, message: 'The email is already registered' });
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
@@ -68,7 +63,6 @@ const login = async (req, res) => {
 }
 
 const modifyProfile = async (req, res) => {
-  console.log("funcion de modificar")
   console.log(req.userProfile); // es el usuario con los datos correspondiente al token
   const newUser = new User(req.body);
   newUser.password = bcrypt.hashSync(req.body.password, 10)

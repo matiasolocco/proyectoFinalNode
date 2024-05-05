@@ -18,17 +18,6 @@ const addAircraft = async (req, res) => {
 //2º endpoint CRUD (Read) --> buscar aviones
 //Prueba postman ruta aircraft/select: OK
 const selectAircraft = async (req, res) => {
-  /*-->
-  //const aircrafts = await Aircraft.find();
-  //return res.status(200).json(aircrafts)
-  
-    //onst nameUser = req.query.name;
-    const aircrafts = await Aircraft.find() //const users = await User.find({ name: nameUser }) 
-      //.populate({ path: 'aircraft', select: 'model' })
-      .populate({ path: 'airlines', select: 'name' });
-    return res.status(200).json(aircrafts);
-  <-- */
- 
     try {
       const aircrafts = await Aircraft.find()
       .populate({ path: 'airline', select: 'name' })
@@ -38,8 +27,7 @@ const selectAircraft = async (req, res) => {
       console.log(error);
       return res.status(500).json(error);
     }
-  
-  
+   
 }
 //3º endpoint CRUD (Read) --> busco 1 solo avión (id: 66321438b5d0e83cab2a0f68)
 //Prueba postman ruta aircraft/selectone/:id : OK
@@ -74,30 +62,6 @@ const updateAircraft = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-/*const updateAircraft = async (req, res) => {
-  try {
-      const { id } = req.params;
-      const aircraftBody = new Aircraft(req.body)
-      aircraftBody._id = id;//accedo al body de mi id
-      const updateAircraft = await Aircraft.findByIdAndUpdate(id, aircraftBody, 
-        { new: true })//luego me devuelve mi objeto (id) modificado
-      console.log(updateAircraft);
-      if (!updateAircraft) {
-          return res.status(404).json({ message: "Aircraft no existe" });
-      }
-      return res.status(200).json(updateAircraft);
-
-  } catch (error) {
-      console.log(error)
-      return res.status(500).json(error)
-  }
-
-}*/
-
-
-
-
-
 
 //5º endpoint CRUD (Delete) --> elimino un avión ( id: 66321408b5d0e83cab2a0f62)
 //Prueba Postman ruta aircraft/delete/:id : OK

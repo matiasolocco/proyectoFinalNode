@@ -1,12 +1,13 @@
-const Airline = require("../models/airlines.model")
+const Airline = require("../models/airlines.model");
+
 const addAirline = async (req, res) => {
     try {
-        console.log(req.body)
-        const newAirline = new Airline(req.body)
-        const findAirline = await Airline.find({ name: req.body.name })
-        console.log(findAirline)
+        console.log(req.body);
+        const newAirline = new Airline(req.body);
+        const findAirline = await Airline.find({ name: req.body.name });
+        console.log(findAirline);
         if (findAirline.length !== 0) {
-            return res.json({ message: "Esta ya está registrada" })
+            return res.json({ message: "This ariline has already been registered" });
         }
         const createdAirline = await newAirline.save();
         return res.json(createdAirline)
@@ -37,7 +38,7 @@ const updateAirline = async (req, res) => {
         const updateAirline = await Airline.findByIdAndUpdate(id, airlineBody, { new: true })
         console.log(updateAirline)
         if (!updateAirline) {
-            return res.status(404).json({ message: "Airline no existe" })
+            return res.status(404).json({ message: "This airline does not exists" })
         }
         return res.status(200).json(updateAirline)
     } catch (error) {
