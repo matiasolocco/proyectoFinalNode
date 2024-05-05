@@ -10,8 +10,8 @@ const validateEmailDB = async (emailUser) => {
 };
 
 const validatePassword = (pass) => {
-  const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/; // 1 mayuscula, 1 minuscula,  minimo 8
-  return regex.test(pass); // test devuelve true o false
+  const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+  return regex.test(pass); 
 };
 
 module.exports = { validateEmailDB, validatePassword };

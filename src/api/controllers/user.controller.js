@@ -38,7 +38,8 @@ const register = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-
+//2º endpoint --> Login usuarios y ruta privada hacia los aviones que tiene cargados el usuario
+//Prueba postman ruta user/login: OK
 const login = async (req, res) => {
   try {
     const userBody = req.body;
@@ -61,7 +62,8 @@ const login = async (req, res) => {
     return res.status(500).json(error);
   }
 }
-
+//3º endpoint --> Modificacion de usuarios
+//Prueba postman ruta user/update: OK
 const modifyProfile = async (req, res) => {
   console.log(req.userProfile); // es el usuario con los datos correspondiente al token
   const newUser = new User(req.body);
@@ -71,17 +73,9 @@ const modifyProfile = async (req, res) => {
   const updateUser = await User.findByIdAndUpdate(req.userProfile._id, newUser, { new: true })
   return res.status(200).json({ data: updateUser })
 }
-const addUser = async (req, res) => {
-  try {
-    const newUser = new User(req.body);
-    const createdUser = await newUser.save();
-    return res.json(createdUser);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json(error);
-  }
-};
 
+//4º endpoint --> Modificación de usuarios por id para agregar sus aviones
+//Prueba postman ruta user/update/id: OK
 const updateUser = async (req, res) => {
   try {
     const idUser = req.params.id;
@@ -99,7 +93,8 @@ const updateUser = async (req, res) => {
   }
 };
 
-
+//5º endpoint --> visualizar todos los usuarios registrados, sus datos personales y aviones
+//Prueba postman ruta user/register: OK
 const selectUser = async (req, res) => {
   try {
     const users = await User.find()
@@ -122,4 +117,4 @@ const selectUser = async (req, res) => {
 };
 
 
-module.exports = { register, login, modifyProfile, addUser, selectUser, updateUser };
+module.exports = { register, login, modifyProfile, selectUser, updateUser };

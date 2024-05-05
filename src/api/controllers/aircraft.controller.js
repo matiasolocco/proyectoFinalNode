@@ -53,7 +53,8 @@ const updateAircraft = async (req, res) => {
     console.log(idAircraft, idAirline);
     const modifyAircraft = await Aircraft.findByIdAndUpdate(
       idAircraft,
-      { $push: { airline: idAirline } },
+      //RELACION CON EL MODELO ARILINE
+      { $push: { airline: idAirline } },//Se hace un push para agregar la aerolinea que ya tenemos cargada y que puede compartir con otros aviones
       { new: true }
     );
     return res.status(200).json(modifyAircraft);

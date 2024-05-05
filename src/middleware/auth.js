@@ -3,7 +3,6 @@ const User = require("../api/models/user.model")
 
 const isAuth = async (req, res, next) => {
     try {
-        //req.params, req.url, req.body
         const auth = req.headers.authorization;
         if (!auth) {
             return res.status(400).json({ message: "No hay token" })
